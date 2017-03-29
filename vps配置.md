@@ -1,3 +1,8 @@
+---
+title: vps安装配置
+date: 2017-03-29 17:41:53
+tags: vps,linux
+---
 ## 安装配置shadowsocks ##
 ### 1.安装pip ###
 **ubuntu**:  
@@ -24,3 +29,20 @@
     ssserver -c /etc/shadowsocks.json --fast-open -d start
 关闭：  
     ssserver -d stop
+### Google BBR 非openvz加速（非必须） ###
+    wget --no-check-certificate https://github.com/52fancy/GooGle-BBR/raw/master/BBR.sh && sh BBR.sh
+## 安装配置 Softether VPN ##
+### 服务器端配置 ##
+执行：  
+```
+wget http://www.softether-download.com/files/softether/v4.18-9570-rtm-2015.07.26-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.18-9570-rtm-2015.07.26-linux-x64-64bit.tar.gz
+tar -xzvf softether-vpnserver-v4.18-9570-rtm-2015.07.26-linux-x64-64bit.tar.gz
+cd vpnserver/
+make
+```
+按提示输入三个1后：  
+    ./vpnserver start
+服务器端配置完毕
+### 客户端 ###
+[客户端点击下载](http://www.softether-download.com/files/softether/v4.18-9570-rtm-2015.07.26-tree/Windows/Admin_Tools/VPN_Server_Manager_and_Command-line_Utility_Package/softether-vpn_admin_tools-v4.18-9570-rtm-2015.07.26-win32.zip)
+

@@ -1,3 +1,8 @@
+---
+title: 安装配置centos
+date: 2017-03-29 17:41:53
+tags: vps
+---
 ## 修改yum源为阿里云 ##  
 阿里云Linux安装镜像源地址：http://mirrors.aliyun.com/
 
