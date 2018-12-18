@@ -263,18 +263,21 @@ gunicorn -w 4 -b 0.0.0.0:2667 -k gevent -D webhook:app
 ```
 基本原理是当服务器收到请求后会执行一个更新脚本`webhook.sh`，其具体内容如下：
 ```
-#!/usr/bin/env bash
+#!/bin/bash
 
-cd ~/hexo_blog_static
-git pull https://github.com/zhai3516/hexo_blog_static.git
-rm -rf ~/hexo_blog/source/_posts/*
-cp -r ~/hexo_blog_static/blog-md/* ~/hexo_blog/source/_posts/
-
-cd ~/hexo_blog
+GIT_REPO=https://github.com/muyurainy/note.git
+REPO_dir=~/note/hexo
+HEXO_dir=~/muyus
+cd ${REPO_dir}
+git pull ${GIT_REPO}
+rm -rf ${HEXO_dir}/source/_posts/*
+cp -r ${REPO_dir}/* ${HEXO_dir}/source/_posts/
+cd ${HEXO_dir}
 hexo clean
 hexo generate
-rm -rf /var/www/hexo/*
-cp -r ~/hexo_blog/public/* /var/www/hexo/
+rm -rf /home/hexo/www/*
+cp -r ${HEXO_dir}/public/* /home/hexo/www/
+
 ```
 ## 第三方服务 ##
 ### 验证百度、google搜索 ###
