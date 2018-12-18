@@ -225,8 +225,8 @@ deploy:
 - [nginx](#安装nginx)
 - [hexo安装配置](#hexo安装配置)
 ### 配置Github Webhook
-首先将博客的内容(`${HEXO_dir}/source/_posts/`)托管到github上，并创建一个webhook：
-![]()
+首先将博客的内容(`${HEXO_dir}/source/_posts/`)托管到github上，并创建一个webhook：  
+![webhook](https://github.com/muyurainy/gallery/blob/master/hexo/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png?raw=true)
 在vps上搭建一个wenhook server用来监听gihub的请求，以下是基于flask的实现：
 ```python
 #!/usr/bin/env python
@@ -253,6 +253,10 @@ def update():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8888, debug=False)
+```
+需要用到的python库有`flask、gunicorn、gevent`，如果没有安装使用pip安装即可。然后执行以下命令开启监听服务：
+```bash
+gunicorn -w 4 -b 0.0.0.0:2667 -k gevent -D webhook:app
 ```
 基本原理是当服务器收到请求后会执行一个更新脚本`webhook.sh`，其具体内容如下：
 ```
