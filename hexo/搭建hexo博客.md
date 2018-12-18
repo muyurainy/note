@@ -225,7 +225,7 @@ deploy:
 - [nginx](#安装nginx)
 - [hexo安装配置](#hexo安装配置)
 ### 配置Github Webhook
-首先将博客的内容(`${HEXO_dir}/source/_posts/`)托管到github上，并创建一个webhook：
+首先将博客的内容(`${HEXO_dir}/source/_posts/`)托管到github上，并创建一个webhook：  
 
 ![webhook](https://github.com/muyurainy/gallery/blob/master/hexo/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/1.png?raw=true)
 
