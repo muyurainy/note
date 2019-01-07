@@ -15,7 +15,7 @@ toc: true
 点击以下链接下载 [Stable](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe) 或 [Edge](https://download.docker.com/win/edge/Docker%20for%20Windows%20Installer.exe) 版本的 Docker for Windows。  
 双击exe文件安装即可
 ## 使用Dockerfile定制镜像
-> 使用官方提供的ubuntu镜像对于日常使用是不够的，所以需要自己定制一些软件，因此打算从Dockerfile定制镜像。
+> 官方提供的ubuntu镜像对于日常使用是不够的，所以需要自己定制一些软件，因此打算从Dockerfile定制镜像。
 
 在空白目录下新建Dockerfile，写入以下内容：
 ```bash
@@ -48,3 +48,25 @@ the input device is not a TTY.  If you are using mintty, try prefixing the comma
 ```bash
 winpty docker run -it --mount type=bind,source=/d/lcy/docker,target=/root/data ubuntu:v1 bash
 ```
+## 操作容器
+- 启动已终止容器：
+    ```bash
+    docker container start 01290bcaf86d
+    ```
+- 进入容器
+    ```bash
+    docker exec -it 01290bcaf86d bash
+    ```
+- 终止容器
+    ```bash
+    docker container stop 01290bcaf86d
+    ```
+- 删除容器
+    ```bash
+    docker container stop 01290bcaf86d
+    ```
+- 删除所有容器
+    ```bash
+    docker rm $(docker ps -aq)
+    ```
+
