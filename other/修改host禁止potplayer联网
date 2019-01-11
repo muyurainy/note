@@ -1,0 +1,5 @@
+打开以下路径：C:\Windows\System32\drivers\etc，找到host文件
+添加以下三行：
+127.0.0.1 tiara.daum.net
+127.0.0.1 start.tiara.daum.net
+127.0.0.1 get.daum.net

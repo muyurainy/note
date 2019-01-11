@@ -1,0 +1,136 @@
+一、下载
+aria2下载地址
+http://sourceforge.net/projects/aria2/files/stable/
+
+建议windows下用1.17.1版本，虽然最新已经是1.18.3。
+64位还是32位你看着办：
+aria2-1.17.1-win-64bit-build1.zip         
+aria2-1.17.1-win-32bit-build1.zip
+
+二、安装
+解压后随便找个英文路径的丢进去就行了
+我就丢在D:\Program Files\aria2\下
+
+接下来新建几个文件：
+Aria2.log  （日志，空文件就行）
+aria2.session （下载历史，空文件就行）
+aria2.conf    （配置文件）
+HideRun.vbs  （隐藏cmd窗口运行用到的）
+
+三、配置 （重点来了）
+1、配置aria2.conf 
+
+用文本编辑工具打开刚才建立的aria2.conf 
+复制按下面的内容，
+注意修改一下选项：
+dir=D:\Downloads\  （下载文件保存路径，改为你想要的）
+log=D:\Program Files\aria2\Aria2.log   （日志文件，如果不需要日志，这一行可去掉，如果需要，路径D:\Program Files\aria2\改为你安装aria2的路径）
+input-file=D:\Program Files\aria2\aria2.session
+save-session=D:\Program Files\aria2\aria2.session（这两个是记录和读取下载历史用的，断电和重启时保证下载任务不会丢失，如果有时aria2不能启动，清空这里面的内容就行了，路径D:\Program Files\aria2\改为你安装aria2的路径）
+
+dir=D:\Downloads\
+log=D:\Program Files\aria2\Aria2.log
+input-file=D:\Program Files\aria2\aria2.session
+save-session=D:\Program Files\aria2\aria2.session
+save-session-interval=60
+force-save=true
+log-level=error
+
+
+# see --split option
+max-concurrent-downloads=5
+continue=true
+max-overall-download-limit=0
+max-overall-upload-limit=50K
+max-upload-limit=20
+
+# Http/FTP options
+connect-timeout=120
+lowest-speed-limit=10K
+max-connection-per-server=10
+max-file-not-found=2
+min-split-size=1M
+split=5
+check-certificate=false
+http-no-cache=true
+
+# FTP Specific Options
+
+# BT/PT Setting
+bt-enable-lpd=true
+#bt-max-peers=55
+follow-torrent=true
+enable-dht6=false
+bt-seed-unverified
+rpc-save-upload-metadata=true
+bt-hash-check-seed
+bt-remove-unselected-file
+bt-request-peer-speed-limit=100K
+seed-ratio=0.0
+
+
+# Metalink Specific Options
+
+# RPC Options
+enable-rpc=true
+pause=false
+rpc-allow-origin-all=true
+rpc-listen-all=true
+rpc-save-upload-metadata=true
+rpc-secure=false
+
+# Advanced Options
+daemon=true
+disable-ipv6=true
+enable-mmap=true
+file-allocation=falloc 
+max-download-result=120
+#no-file-allocation-limit=32M
+force-sequential=true
+parameterized-uri=true
+
+复制代码
+
+
+
+
+2、实现开机无cmd窗口启动
+
+用文本编辑工具打开刚才建立的HideRun.vbs
+
+复制以下内容，注意修改D:\Progra~1\aria2\ 为你的aria2安装路径
+
+CreateObject("WScript.Shell").Run "D:\Progra~1\aria2\aria2c.exe --conf-path=aria2.conf",0
+复制代码
+
+
+要启动aria2，一定要点击这个文件，不要点击aria2c.exe
+
+如果要开机启动，创建一个HideRun.vbs的快捷方式，把快捷方式丢到 C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup中
+
+我用的是windows8.1，windowsxp和7，自己找一下，很多年不用xp了，忘记那个路径了
+
+
+四、管理界面
+
+aria2是命令行下载器，是没有界面的，不过有webui
+
+最简单就是访问这个网址就行了
+http://ziahamza.github.io/webui-aria2/
+
+或者到https://github.com/ziahamza/webui-aria2下载 （需爬梯）
+
+
+
+五、进阶运用
+
+1、迅雷离线yaaw下载
+脚本地址：https://github.com/binux/ThunderLixianExporter
+
+2、旋风离线yaaw下载
+脚本地址：http://userscripts.org/scripts/show/160258
+
+3、百度盘yaaw下载
+脚本地址：http://userscripts.org/scripts/show/162138
+
+具体网上有很多教程

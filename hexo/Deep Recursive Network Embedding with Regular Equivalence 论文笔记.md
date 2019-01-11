@@ -14,27 +14,26 @@ mathjax: true
 ## 参考材料
 - 原文链接：[https://www.kdd.org/kdd2018/accepted-papers/view/deep-recursive-network-embedding-with-regular-equivalence](https://www.kdd.org/kdd2018/accepted-papers/view/deep-recursive-network-embedding-with-regular-equivalence)
 - 代码实现：[https://github.com/tadpole/DRNE](https://github.com/tadpole/DRNE)
+
 ## 引言
 网络嵌入目的是在嵌入空间中保持节点的相似性，例如，如果两个节点具有结构相似性，则他们的表示也应该相似。通常使用的结构相似性是结构等价性(structural equivalence)，即如果两个节点有很多共同邻居，则认为其具有结构等价性。例如LINE、SDNE这些论文都是基于结构等价性的。  
 
 然而在网络中有一些节点，他们并没有共同的邻居，但他们具有相同的“角色”或者处于相同的“位置”，例如两位母亲都有一个共同的模式，就是连接着一位丈夫和若干个孩子。虽然这两位母亲可能没有连边，但她们有共同的角色母亲，这就是本文提到的规则等价性（regularly equivalent）。实际上规则等价性是结构等价性的一种松弛，容易得出如果两个节点具有结构等价性，则一定具有规则等价性，反之不成立。因此规则等价性更灵活。  
 
-为了保持规则等价性，最直接的方法对于每个节点对，计算器规则等价性并约束节点表示的相似性。但是对于large-scale来说这么做不现实。一种替代的方法是使用一些中心性测量方法来代替，但是一种中心性仅仅可以保持一种角色(?)，而且一些中心性方法本身复杂度很高。
+为了保持规则等价性，最直接的方法对于每个节点对，计算其规则等价性并约束节点表示的相似性。但是对于large-scale来说这么做不现实。一种替代的方法是使用一些中心性测量方法来代替，但是一种中心性仅仅可以保持一种具体角色(?)，而且一些中心性方法本身复杂度很高。
 
 如图一所示，规则等价性的定义是递归的，换句话说，两个具有规则等价性的节点其邻居也是规则等价的。利用这种特性，本文利用LSTM来刻画这种递归的关系。 
 
 总结本文的动机如下：
-- regular equivalence is more flexible and capable of covering a broad range of network applications related to
-structural roles or node importance
-- How to effectively and efficiently preserve regular equivalence in
-network embedding is still an open problem
-- the definition of regular equivalence is recursive.
-This enlightens us to learn network embedding in a recursive way
+- regular equivalence is more flexible and capable of covering a broad range of network applications related to structural roles or node importance, but is largely ignored by the literature of network embedding
+- How to effectively and efficiently preserve regular equivalence in network embedding is still an open problem
+- the definition of regular equivalence is recursive. This enlightens us to learn network embedding in a recursive way
 
 贡献主要有以下三点：
 - 本文研究了一个新颖的问题，就是通过规则等价性来学习节点的表示
 - 通过提出的DRNE模型可以很好的刻画规则等价性
 - 实验结果证实模型的优越性
+
 ## DEEP RECURSIVE NETWORK EMBEDDING
 
 
