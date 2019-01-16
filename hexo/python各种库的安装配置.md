@@ -59,3 +59,14 @@ pip install jupyterlab
     echo 'unset XDG_RUNTIME_DIR' >> ~/.bashrc
     source ~/.bashrc
     ```
+
+jupyter 使用virtualenv:
+- 实际上就是在jupyter中添加一个python环境，执行一下命令：
+    ```bash
+    cd $ENV_HOME/python_env
+    source bin/acivate
+    pip install ipykernel
+    python -m ipykernel install --user --name=python_env
+    jupyter lab
+    ```
+    其中python_env是你的虚拟python环境的名字（而非路径）
