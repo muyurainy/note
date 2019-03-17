@@ -70,3 +70,10 @@ jupyter 使用virtualenv:
     jupyter lab
     ```
     其中python_env是你的虚拟python环境的名字（而非路径）
+
+通过ssh端口转发访问内网的jupyter服务：
+- 目前有三台机器，host1是外网机器，host2可以连接host1和host3，jupyter运行在内网机器host3上，在host1上执行：
+```bash
+ssh -NTf -L 2121:host3:2666 user@host2
+```
+这样就可以通过在host1上访问2121端口相当于访问了host3的2666端口
