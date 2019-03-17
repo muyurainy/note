@@ -5,4 +5,4 @@
 # 快速索引
 | Chapter 1 | Chapter 2 |
 | :--------: | :--------: |
-| [笔试](https://github.com/) | [面试](https://github.com/) |
+| [笔试](https://github.com/muyurainy/note/blob/master/interview/%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95.md) | [面试](https://github.com/muyurainy/note/blob/master/interview/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95.md) |
